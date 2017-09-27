@@ -36,11 +36,10 @@ class PatNavigationController: UIViewController {
         toViewController.title = "\(viewControllers.count)"
         let toWrapperView = NavigationWrapperView(viewController: toViewController, navigationController: self)
         
-        let animator = Animatior()
-        let context = TransitionContext(rootView: view,
-                                        fromWrapper: fromWrapperView,
-                                        toWrapper: toWrapperView,
-                                        isPush: true)
+        let animator = PushAnimatior()
+        let context = PushTransitionContext(rootView: view,
+                                            fromWrapper: fromWrapperView,
+                                            toWrapper: toWrapperView)
         context.completion = { completed in
             self.viewControllers.append(toWrapperView)
             
@@ -63,15 +62,14 @@ class PatNavigationController: UIViewController {
         
         let toWrapperView = viewControllers[count - 2]
         let toViewController = toWrapperView.viewController
-
+        
         fromViewController.willMove(toParentViewController: nil)
         addChildViewController(toViewController)
         
-        let animator = Animatior()
-        let context = TransitionContext(rootView: view,
-                                        fromWrapper: fromWrapperView,
-                                        toWrapper: toWrapperView,
-                                        isPush: false)
+        let animator = PopAnimatior()
+        let context = PopTransitionContext(rootView: view,
+                                           fromWrapper: fromWrapperView,
+                                           toWrapper: toWrapperView)
         context.completion = { completed in
             _ = self.viewControllers.popLast()
             

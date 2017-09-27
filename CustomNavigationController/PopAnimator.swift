@@ -1,7 +1,7 @@
 
 import UIKit
 
-class Animatior: NSObject, UIViewControllerAnimatedTransitioning {
+class PopAnimatior: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let source = transitionContext.viewController(forKey: .from),
             let sourceView = transitionContext.view(forKey: .from),
@@ -15,6 +15,7 @@ class Animatior: NSObject, UIViewControllerAnimatedTransitioning {
         source.beginAppearanceTransition(false, animated: true)
         sourceView.frame = transitionContext.initialFrame(for: source)
         
+        destinationView.isUserInteractionEnabled = false
         destination.beginAppearanceTransition(true, animated: true)
         container.insertSubview(destinationView, belowSubview: sourceView)
         destinationView.frame = transitionContext.initialFrame(for: destination)
@@ -25,6 +26,7 @@ class Animatior: NSObject, UIViewControllerAnimatedTransitioning {
                 destinationView.frame = transitionContext.finalFrame(for: destination)
             })
         }) { (completed) in
+            destinationView.isUserInteractionEnabled = true
             source.endAppearanceTransition()
             destination.endAppearanceTransition()
             transitionContext.completeTransition(completed)

@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97C137461F7BDA2C0068DFA6 /* PopTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C137451F7BDA2C0068DFA6 /* PopTransitionContext.swift */; };
+		97C137481F7BDAA40068DFA6 /* TransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C137471F7BDAA40068DFA6 /* TransitionContext.swift */; };
+		97C1374A1F7BDC0B0068DFA6 /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C137491F7BDC0B0068DFA6 /* PushAnimator.swift */; };
 		97E1ED031F797BC700658FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED021F797BC700658FD3 /* AppDelegate.swift */; };
 		97E1ED051F797BC700658FD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED041F797BC700658FD3 /* ViewController.swift */; };
 		97E1ED0A1F797BC700658FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97E1ED091F797BC700658FD3 /* Assets.xcassets */; };
 		97E1ED0D1F797BC700658FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E1ED0B1F797BC700658FD3 /* LaunchScreen.storyboard */; };
 		97E1ED151F797BDA00658FD3 /* PatNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED141F797BDA00658FD3 /* PatNavigationController.swift */; };
-		97E1ED171F79829700658FD3 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED161F79829700658FD3 /* Animator.swift */; };
-		97E1ED191F79886700658FD3 /* TransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED181F79886700658FD3 /* TransitionContext.swift */; };
+		97E1ED171F79829700658FD3 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED161F79829700658FD3 /* PopAnimator.swift */; };
+		97E1ED191F79886700658FD3 /* PushTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED181F79886700658FD3 /* PushTransitionContext.swift */; };
 		97E1ED1B1F798AD500658FD3 /* NavigationWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E1ED1A1F798AD500658FD3 /* NavigationWrapperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97C137451F7BDA2C0068DFA6 /* PopTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTransitionContext.swift; sourceTree = "<group>"; };
+		97C137471F7BDAA40068DFA6 /* TransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContext.swift; sourceTree = "<group>"; };
+		97C137491F7BDC0B0068DFA6 /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
 		97E1ECFF1F797BC700658FD3 /* CustomNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E1ED021F797BC700658FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97E1ED041F797BC700658FD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,8 +31,8 @@
 		97E1ED0C1F797BC700658FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97E1ED0E1F797BC700658FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E1ED141F797BDA00658FD3 /* PatNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatNavigationController.swift; sourceTree = "<group>"; };
-		97E1ED161F79829700658FD3 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		97E1ED181F79886700658FD3 /* TransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionContext.swift; sourceTree = "<group>"; };
+		97E1ED161F79829700658FD3 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		97E1ED181F79886700658FD3 /* PushTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTransitionContext.swift; sourceTree = "<group>"; };
 		97E1ED1A1F798AD500658FD3 /* NavigationWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationWrapperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +73,11 @@
 				97E1ED0E1F797BC700658FD3 /* Info.plist */,
 				97E1ED141F797BDA00658FD3 /* PatNavigationController.swift */,
 				97E1ED1A1F798AD500658FD3 /* NavigationWrapperView.swift */,
-				97E1ED161F79829700658FD3 /* Animator.swift */,
-				97E1ED181F79886700658FD3 /* TransitionContext.swift */,
+				97C137491F7BDC0B0068DFA6 /* PushAnimator.swift */,
+				97E1ED161F79829700658FD3 /* PopAnimator.swift */,
+				97C137471F7BDAA40068DFA6 /* TransitionContext.swift */,
+				97E1ED181F79886700658FD3 /* PushTransitionContext.swift */,
+				97C137451F7BDA2C0068DFA6 /* PopTransitionContext.swift */,
 			);
 			path = CustomNavigationController;
 			sourceTree = "<group>";
@@ -144,12 +153,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97E1ED171F79829700658FD3 /* Animator.swift in Sources */,
+				97E1ED171F79829700658FD3 /* PopAnimator.swift in Sources */,
 				97E1ED051F797BC700658FD3 /* ViewController.swift in Sources */,
+				97C137481F7BDAA40068DFA6 /* TransitionContext.swift in Sources */,
 				97E1ED151F797BDA00658FD3 /* PatNavigationController.swift in Sources */,
 				97E1ED031F797BC700658FD3 /* AppDelegate.swift in Sources */,
+				97C137461F7BDA2C0068DFA6 /* PopTransitionContext.swift in Sources */,
 				97E1ED1B1F798AD500658FD3 /* NavigationWrapperView.swift in Sources */,
-				97E1ED191F79886700658FD3 /* TransitionContext.swift in Sources */,
+				97C1374A1F7BDC0B0068DFA6 /* PushAnimator.swift in Sources */,
+				97E1ED191F79886700658FD3 /* PushTransitionContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

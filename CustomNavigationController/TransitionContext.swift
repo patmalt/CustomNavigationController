@@ -11,13 +11,11 @@ class TransitionContext: NSObject, UIViewControllerContextTransitioning {
     private let rootView: UIView
     private let fromWrapper: NavigationWrapperView
     private let toWrapper: NavigationWrapperView
-    private let isPush: Bool
     
-    init(rootView: UIView, fromWrapper: NavigationWrapperView, toWrapper: NavigationWrapperView, isPush: Bool) {
+    init(rootView: UIView, fromWrapper: NavigationWrapperView, toWrapper: NavigationWrapperView) {
         self.rootView = rootView
         self.fromWrapper = fromWrapper
         self.toWrapper = toWrapper
-        self.isPush = isPush
         super.init()
     }
     
@@ -48,47 +46,11 @@ class TransitionContext: NSObject, UIViewControllerContextTransitioning {
     }
     
     func initialFrame(for vc: UIViewController) -> CGRect {
-        if isPush {
-            if vc == self.viewController(forKey: .from) {
-                return containerView.frame
-            } else if vc == self.viewController(forKey: .to) {
-                let frame = containerView.frame
-                let origin = CGPoint(x: frame.width, y: frame.origin.y)
-                return CGRect(origin: origin, size: frame.size)
-            } else {
-                return CGRect.zero
-            }
-        } else {
-            if vc == self.viewController(forKey: .from) {
-                return containerView.frame
-            } else if vc == self.viewController(forKey: .to) {
-                return containerView.frame
-            } else {
-                return CGRect.zero
-            }
-        }
+        return CGRect.zero
     }
     
     func finalFrame(for vc: UIViewController) -> CGRect {
-        if isPush {
-            if vc == self.viewController(forKey: .from) {
-                return containerView.frame
-            } else if vc == self.viewController(forKey: .to) {
-                return containerView.frame
-            } else {
-                return CGRect.zero
-            }
-        } else {
-            if vc == self.viewController(forKey: .from) {
-                let frame = containerView.frame
-                let origin = CGPoint(x: frame.width, y: frame.origin.y)
-                return CGRect(origin: origin, size: frame.size)
-            } else if vc == self.viewController(forKey: .to) {
-                return containerView.frame
-            } else {
-                return CGRect.zero
-            }
-        }
+        return CGRect.zero
     }
     
     var containerView: UIView {
