@@ -3,32 +3,30 @@ import UIKit
 
 class Animatior: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let source = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-            let destination = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else
+        guard let source = transitionContext.viewController(forKey: .from),
+            let sourceView = transitionContext.view(forKey: .from),
+            let destination = transitionContext.viewController(forKey: .to),
+            let destinationView = transitionContext.view(forKey: .to) else
         {
             return transitionContext.completeTransition(false)
         }
         let container = transitionContext.containerView
         
-        let snapshot = destination.view.snapshotView(afterScreenUpdates: true) ?? UIView()
-        
         source.beginAppearanceTransition(false, animated: true)
-        destination.beginAppearanceTransition(true, animated: true)
+        sourceView.frame = transitionContext.initialFrame(for: source)
         
-        container.addSubview(snapshot)
-        snapshot.frame = CGRect(origin: CGPoint(x: container.frame.maxX, y: 0), size: container.frame.size)
+        destination.beginAppearanceTransition(true, animated: true)
+        container.insertSubview(destinationView, belowSubview: sourceView)
+        destinationView.frame = transitionContext.initialFrame(for: destination)
         
         UIView.animateKeyframes(withDuration: 1, delay: 0, options: [.calculationModeCubic], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
-                snapshot.frame.origin.x = 0
+                sourceView.frame = transitionContext.finalFrame(for: source)
+                destinationView.frame = transitionContext.finalFrame(for: destination)
             })
         }) { (completed) in
-            container.addSubview(destination.view)
-            snapshot.removeFromSuperview()
-            
             source.endAppearanceTransition()
             destination.endAppearanceTransition()
-            
             transitionContext.completeTransition(completed)
         }
     }

@@ -26,9 +26,15 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(GestureRecognizer)
     }
     
+    private func randonColor() -> UIColor {
+        let colors: [UIColor] = [.black, .darkGray, .lightGray, .white, .gray, .green,
+                                 .blue, .cyan, .yellow, .magenta, .orange, .purple, .brown]
+        return colors[Int(arc4random_uniform(UInt32(colors.count)))]
+    }
+    
     @objc
     private func tap() {
-        patNavigationController?.push(viewController: ViewController(color: .blue))
+        patNavigationController?.push(viewController: ViewController(color: randonColor()))
     }
 }
 

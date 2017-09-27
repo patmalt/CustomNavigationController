@@ -35,38 +35,59 @@ class PatNavigationController: UIViewController {
         
         toViewController.title = "\(viewControllers.count)"
         let toWrapperView = NavigationWrapperView(viewController: toViewController, navigationController: self)
-        viewControllers.append(toWrapperView)
-        addNavigationWrapperView(toWrapperView)
         
-        fromWrapperView.removeFromSuperview()
-        
-        fromViewController.removeFromParentViewController()
-        toViewController.didMove(toParentViewController: self)
+        let animator = Animatior()
+        let context = TransitionContext(rootView: view,
+                                        fromWrapper: fromWrapperView,
+                                        toWrapper: toWrapperView,
+                                        isPush: true)
+        context.completion = { completed in
+            self.viewControllers.append(toWrapperView)
+            
+            fromWrapperView.removeFromSuperview()
+            
+            fromViewController.removeFromParentViewController()
+            toViewController.didMove(toParentViewController: self)
+        }
+        animator.animateTransition(using: context)
     }
     
     @objc
     func popViewController() {
-        guard viewControllers.count > 1,
-            let fromWrapperView = viewControllers.popLast(),
-            let toWrapperView = viewControllers.last else
-        {
+        let count = viewControllers.count
+        guard count > 1 else {
             return
         }
+        let fromWrapperView = viewControllers[count - 1]
         let fromViewController = fromWrapperView.viewController
+        
+        let toWrapperView = viewControllers[count - 2]
         let toViewController = toWrapperView.viewController
 
         fromViewController.willMove(toParentViewController: nil)
-        toViewController.willMove(toParentViewController: self)
         addChildViewController(toViewController)
         
-        addNavigationWrapperView(toWrapperView)
-        fromWrapperView.removeFromSuperview()
-        
-        fromViewController.removeFromParentViewController()
-        toViewController.didMove(toParentViewController: self)
+        let animator = Animatior()
+        let context = TransitionContext(rootView: view,
+                                        fromWrapper: fromWrapperView,
+                                        toWrapper: toWrapperView,
+                                        isPush: false)
+        context.completion = { completed in
+            _ = self.viewControllers.popLast()
+            
+            fromWrapperView.removeFromSuperview()
+            
+            fromViewController.removeFromParentViewController()
+            toViewController.didMove(toParentViewController: self)
+        }
+        animator.animateTransition(using: context)
     }
     
-    private func addNavigationWrapperView(_ wrapperView: NavigationWrapperView) {
+    private func displayRootViewController() {
+        guard let wrapperView = viewControllers.first else {
+            return
+        }
+        addChildViewController(wrapperView.viewController)
         view.addSubview(wrapperView)
         wrapperView.translatesAutoresizingMaskIntoConstraints = false
         view.addConstraints(
@@ -77,14 +98,6 @@ class PatNavigationController: UIViewController {
                 wrapperView.rightAnchor.constraint(equalTo: view.rightAnchor)
             ]
         )
-    }
-    
-    private func displayRootViewController() {
-        guard let wrapperView = viewControllers.first else {
-            return
-        }
-        addChildViewController(wrapperView.viewController)
-        addNavigationWrapperView(wrapperView)
         wrapperView.viewController.didMove(toParentViewController: self)
     }
 }
